@@ -118,6 +118,45 @@
             background: rgba(255, 255, 255, 0.15);
             border: 2px solid transparent;
             transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .side-nav a::after {
+            content: attr(title);
+            position: absolute;
+            right: 35px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.9);
+            color: #fff;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            font-family: 'Poppins', sans-serif;
+            font-weight: 500;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+        }
+
+        @keyframes showActiveLegend {
+            0% { opacity: 0; right: 35px; }
+            15% { opacity: 1; right: 25px; }
+            85% { opacity: 1; right: 25px; }
+            100% { opacity: 0; right: 35px; }
+        }
+
+        .side-nav a:hover::after {
+            opacity: 1;
+            right: 25px;
+            animation: none;
+            transition: all 0.3s ease;
+        }
+
+        .side-nav a.active::after {
+            animation: showActiveLegend 1.5s forwards;
         }
 
         .side-nav a:hover,
@@ -528,45 +567,54 @@
         /* --- RESPONSIVIDADE (MOBILE) --- */
         @media (max-width: 768px) {
             html {
-                font-size: 14px; /* Reduz ligeiramente o tamanho base da fonte em mobile */
+                font-size: 14px;
+                /* Reduz ligeiramente o tamanho base da fonte em mobile */
             }
 
             section {
-                padding: 60px 5%; /* Menos respiro lateral */
+                padding: 60px 5%;
+                /* Menos respiro lateral */
             }
 
             .glass-card {
-                padding: 30px 20px; /* Reduz as bordas internas nos celulares */
+                padding: 30px 20px;
+                /* Reduz as bordas internas nos celulares */
                 border-radius: 25px;
             }
 
             h1.reveal.glow-text {
-                font-size: 2.5rem !important; /* Título principal menor */
+                font-size: 2.5rem !important;
+                /* Título principal menor */
             }
 
             p.reveal {
-                font-size: 1.1rem !important; /* Texto principal menor */
+                font-size: 1.1rem !important;
+                /* Texto principal menor */
             }
 
             .reveal[style*="font-size: 60px;"] {
-                font-size: 40px !important; /* O emoji gay menor */
+                font-size: 40px !important;
+                /* O emoji gay menor */
             }
 
             .side-nav {
-                display: none; /* Esconde a navegação lateral em telas muito pequenas para não ocupar espaço */
+                display: none;
+                /* Esconde a navegação lateral em telas muito pequenas para não ocupar espaço */
             }
 
             .heart-final {
                 font-size: 70px;
                 margin: 20px 0;
             }
-            
+
             .stats-grid {
-                grid-template-columns: 1fr; /* Coloca os cards de stat um embaixo do outro no mobile */
+                grid-template-columns: 1fr;
+                /* Coloca os cards de stat um embaixo do outro no mobile */
             }
 
             .timeline::before {
-                left: 20px; /* Joga a linha para a esquerda no mobile */
+                left: 20px;
+                /* Joga a linha para a esquerda no mobile */
             }
 
             .timeline-item {
@@ -578,12 +626,14 @@
             .timeline-item:nth-child(odd),
             .timeline-item:nth-child(even) {
                 left: 0;
-                text-align: left; /* Tira o alinhamento da direita/centro */
+                text-align: left;
+                /* Tira o alinhamento da direita/centro */
             }
 
             .timeline-item:nth-child(odd)::after,
             .timeline-item:nth-child(even)::after {
-                left: 10px; /* Ajusta a bolinha colorida */
+                left: 10px;
+                /* Ajusta a bolinha colorida */
                 right: auto;
             }
 
@@ -591,7 +641,8 @@
                 font-size: 1rem;
             }
 
-            .btn-help, .btn-result {
+            .btn-help,
+            .btn-result {
                 padding: 12px 25px;
                 font-size: 0.9rem;
             }
@@ -610,11 +661,13 @@
         <a href="#sec-lgbt-info" title="Comunidade LGBTQIA+"></a>
         <a href="#sec-lgbt-stats" title="Estatísticas LGBTQIA+"></a>
         <a href="#sec3" title="História"></a>
+        <a href="#sec-sociologia" title="Sociologia da Violência"></a>
         <a href="#sec-feminicidio" title="O que é Feminicídio"></a>
-        <a href="#sec4" title="Violência"></a>
-        <a href="#sec5" title="Feminicídio"></a>
+        <a href="#sec-tipos-violencia" title="Tipos de Violência"></a>
+        <a href="#sec4" title="Realidade 2024"></a>
         <a href="#sec-ajuda" title="Precisa de Ajuda?"></a>
         <a href="#sec-quiz" title="Quiz Interativo"></a>
+        <a href="#sec-fontes" title="Fontes e Referências"></a>
     </nav>
 
     <section id="sec1">
@@ -775,44 +828,64 @@
         </div>
     </section>
 
+    <!-- NOVA SEÇÃO: SOCIOLOGIA -->
+    <section id="sec-sociologia">
+        <div class="glass-card reveal" style="border-left: 10px solid var(--neon-women);">
+            <h2 class="glow-text">A Raiz Sociológica: Patriarcado e Estrutura</h2>
+            <p style="margin-top: 20px; font-size: 1.1rem; line-height: 1.8;">
+                Para a Sociologia, a violência contra a mulher não é um evento isolado, mas o resultado de uma
+                <strong>desigualdade estrutural</strong> profunda. Entender a sociedade é entender os mecanismos de
+                poder que perpetuam essa realidade.
+            </p>
+
+            <div class="info-block" style="border-left-color: #ffeb3b;">
+                <h3><i class="fas fa-landmark"></i> Patriarcado</h3>
+                <p>Um sistema social milenar onde o poder, o prestígio e o controle são concentrados nas mãos dos
+                    homens. Ele estabelece uma hierarquia de gênero que naturaliza a subordinação feminina e legitima a
+                    violência como forma de controle.</p>
+            </div>
+
+            <div class="info-block" style="border-left-color: #ff8c00;">
+                <h3><i class="fas fa-users-cog"></i> Machismo Estrutural</h3>
+                <p>Diferente do preconceito individual, o machismo estrutural é um "fato social" (conceito de Durkheim).
+                    Ele está infiltrado nas leis, na economia, na linguagem e na cultura, agindo de forma imperativa e
+                    coercitiva sobre a vida das mulheres.</p>
+            </div>
+
+            <div class="info-block" style="border-left-color: #ff0000;">
+                <h3><i class="fas fa-balance-scale-left"></i> Desigualdade de Poder</h3>
+                <p>A violência é a ferramenta extrema para manter a desigualdade. Quando mulheres buscam autonomia ou
+                    desafiam papéis tradicionais, o sistema patriarcal reage através da agressão para "reestabelecer a
+                    ordem" de dominação masculina.</p>
+            </div>
+        </div>
+    </section>
+
     <section id="sec-feminicidio">
         <div class="glass-card reveal"
             style="border: 1px solid var(--neon-women-dim); box-shadow: 0 0 30px rgba(255,0,128,0.1);">
-            <h2 class="glow-text" style="color: var(--neon-women); text-align: center; margin-bottom: 10px;">O que é
-                Feminicídio?</h2>
+            <h2 class="glow-text" style="color: var(--neon-women); text-align: center; margin-bottom: 10px;">
+                Feminicídio: Ódio ao Feminino</h2>
             <p class="reveal"
                 style="text-align: center; font-size: 1.1rem; opacity: 0.85; margin-bottom: 40px; max-width: 800px; margin-left: auto; margin-right: auto;">
-                Mais do que um dado estatístico, o feminicídio é o reflexo trágico de uma sociedade que ainda precisa
-                aprender a proteger suas mulheres. Entender o conceito é a principal arma para a conscientização.
+                O feminicídio é o topo da pirâmide da violência. Não é um crime "passional" ou por "amor", mas um
+                assassinato baseado no desprezo pela vida da mulher.
             </p>
             <div class="info-block" style="background: rgba(255,0,128,0.03); border-left-color: var(--neon-women);">
-                <h3 style="color: var(--neon-women); text-shadow: 0 0 5px var(--neon-women-dim);">Definição</h3>
-                <p>O feminicídio é o assassinato de uma mulher cometido por razões da condição de sexo feminino, ou
-                    seja, quando o crime envolve violência doméstica e familiar e/ou menosprezo ou discriminação à
-                    condição de mulher.</p>
-            </div>
-            <div class="info-block" style="background: rgba(255,0,128,0.03); border-left-color: var(--neon-women);">
-                <h3 style="color: var(--neon-women); text-shadow: 0 0 5px var(--neon-women-dim);">Homicídio Comum vs.
-                    Feminicídio</h3>
-                <p>Enquanto o homicídio comum pode ter diversas motivações (brigas, roubos), o feminicídio é um
-                    <strong style="color: var(--neon-women);">crime de ódio</strong> baseado no gênero. A vítima é morta
-                    especificamente por ser mulher.
-                </p>
-            </div>
-            <div class="info-block" style="background: rgba(255,0,128,0.03); border-left-color: var(--neon-women);">
-                <h3 style="color: var(--neon-women); text-shadow: 0 0 5px var(--neon-women-dim);">Por que combater?</h3>
-                <p>Combater o feminicídio é essencial para interromper o ciclo de violência doméstica e garantir que o
-                    gênero nunca seja um fator de risco para a vida humana.</p>
+                <h3 style="color: var(--neon-women); text-shadow: 0 0 5px var(--neon-women-dim);">Conceito Jurídico e
+                    Social</h3>
+                <p>Tipificado pela Lei 13.104/15, ocorre quando o crime envolve violência doméstica e familiar ou
+                    menosprezo à condição de mulher. Diferencia-se do homicídio comum por ser um <strong
+                        style="color: var(--neon-women);">crime de ódio de gênero</strong>.</p>
             </div>
 
-            <!-- Adição do Trailer Bom Dia, Verônica -->
             <div style="margin-top: 50px; text-align: center;">
                 <h3 style="color: #fff; margin-bottom: 15px; font-family: 'Orbitron'; letter-spacing: 2px;">Para
                     Refletir: "Bom Dia, Verônica"</h3>
                 <p style="opacity: 0.9; max-width: 700px; margin: 0 auto 25px auto; line-height: 1.6;">
                     A série brasileira <strong style="color: var(--neon-women);">"Bom Dia, Verônica"</strong> mergulha
-                    nas profundezas alarmantes da violência contra a mulher e o feminicídio. Uma história tensa e
-                    necessária sobre silêncio, manipulação doméstica e a luta incansável por justiça.
+                    nas profundezas alarmantes da violência contra a mulher. Uma história necessária sobre patriarcado
+                    estrutural e a luta por justiça.
                 </p>
                 <a href="https://www.youtube.com/watch?v=OmCnSsPLREQ" target="_blank" class="btn-help"
                     style="display: inline-flex; align-items: center; gap: 10px; padding: 15px 35px; border-radius: 50px; text-decoration: none; font-weight: bold; background: rgba(255,0,128,0.1);">
@@ -822,45 +895,81 @@
         </div>
     </section>
 
+    <section id="sec-tipos-violencia">
+        <div class="glass-card reveal">
+            <h2 class="glow-text" style="text-align: center;">Os 5 Rostos da Violência</h2>
+            <p style="text-align: center; margin-bottom: 50px;">A Lei Maria da Penha (Lei 11.340/06) define 5 formas
+                principais de agressão que toda mulher deve saber identificar:</p>
+
+            <div class="grid-sigla">
+                <div class="letter-card reveal" style="border-top-color: #ff0080;">
+                    <h3 style="color: #ff0080;">Física</h3>
+                    <p>Qualquer conduta que ofenda a integridade ou saúde corporal da mulher (socos, apertos, arremesso
+                        de objetos).</p>
+                </div>
+                <div class="letter-card reveal" style="border-top-color: #ff0080;">
+                    <h3 style="color: #ff0080;">Psicológica</h3>
+                    <p>Isolamento, humilhação, vigilância constante, perseguição e o "gaslighting" (distorcer fatos para
+                        afetar a sanidade da vítima).</p>
+                </div>
+                <div class="letter-card reveal" style="border-top-color: #ff0080;">
+                    <h3 style="color: #ff0080;">Sexual</h3>
+                    <p>Constrangimento a presenciar ou participar de relação sexual não desejada, mesmo em relações
+                        conjugais/casamento.</p>
+                </div>
+                <div class="letter-card reveal" style="border-top-color: #ff0080;">
+                    <h3 style="color: #ff0080;">Patrimonial</h3>
+                    <p>Retenção de documentos, destruição de instrumentos de trabalho, controle tirânico das finanças ou
+                        quebra de celular.</p>
+                </div>
+                <div class="letter-card reveal" style="border-top-color: #ff0080;">
+                    <h3 style="color: #ff0080;">Moral</h3>
+                    <p>Calúnia, difamação ou injúria. Ataques à honra e reputação da mulher perante amigos, família ou
+                        sociedade.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section id="sec4">
         <div class="glass-card">
-            <h2 class="reveal glow-text">Violência de Gênero: A Outra Pandemia</h2>
-            <p class="reveal" style="text-align: center; opacity: 0.8;">A violência contra a mulher não conhece
-                fronteiras. Ela deve ser combatida com ação.</p>
+            <h2 class="reveal glow-text">Realidade 2024: O Recorde que nos Envergonha</h2>
+            <p class="reveal" style="text-align: center; opacity: 0.8;">Os dados mais atuais do Fórum Brasileiro de
+                Segurança Pública mostram que a violência de gênero atingiu níveis recordes.</p>
             <div class="stats-grid">
                 <div class="stat-card reveal">
-                    <h4>1 em 3</h4>
-                    <p>mulheres já sofreram algum tipo de violência na vida.</p>
+                    <h4>1.492</h4>
+                    <p>feminicídios registrados em 2024, o maior número da série histórica no Brasil.</p>
                 </div>
                 <div class="stat-card reveal">
-                    <h4>82%</h4>
-                    <p>dos casos de violência ocorrem em ambiente doméstico.</p>
+                    <h4>64%</h4>
+                    <p>das vítimas de feminicídio em 2024 eram mulheres negras, expondo o racismo estrutural.</p>
                 </div>
                 <div class="stat-card reveal">
-                    <h4>8h</h4>
-                    <p>No Brasil, um estupro notificado a cada 8 horas.</p>
+                    <h4>80%</h4>
+                    <p>dos crimes foram cometidos por parceiros ou ex-parceiros das vítimas.</p>
                 </div>
                 <div class="stat-card reveal">
                     <h4>6h</h4>
-                    <p>A cada 6 horas uma mulher é vítima de feminicídio no Brasil.</p>
+                    <p>A média permanece trágica: no Brasil, uma mulher é morta por feminicídio a cada 6 horas.</p>
+                </div>
+                <div class="stat-card reveal">
+                    <h4>121</h4>
+                    <p>vítimas tinham medidas protetivas ativas no momento da morte, mostrando falhas no sistema.</p>
                 </div>
                 <div class="stat-card reveal">
                     <h4>74%</h4>
-                    <p>das vítimas de feminicídio no Brasil são mães e deixam órfãos.</p>
-                </div>
-                <div class="stat-card reveal">
-                    <h4>1.467</h4>
-                    <p>mulheres foram vítimas de feminicídio em 2023, maior número da série histórica.</p>
+                    <p>das vítimas eram mães, deixando milhares de órfãos do feminicídio anualmente.</p>
                 </div>
             </div>
 
             <div class="info-block reveal"
                 style="margin-top: 50px; text-align: center; border-left: none; border-top: 5px solid var(--neon-women);">
-                <h3 style="color: var(--neon-women);">Dados e Conscientização</h3>
-                <p style="font-style: italic;">"O silêncio é cúmplice da violência. Educar uma mulher é educar uma
-                    geração, mas protegê-la é garantir o futuro."</p>
-                <p style="margin-top: 10px; font-size: 0.9rem; opacity: 0.7;">O Brasil é o 5º país mais violento para
-                    mulheres no mundo.</p>
+                <h3 style="color: var(--neon-women);">Sociologia do Ódio</h3>
+                <p style="font-style: italic;">"O feminicídio não é um ato de loucura, mas o desfecho de um processo
+                    educativo de dominação masculina."</p>
+                <p style="margin-top: 10px; font-size: 0.9rem; opacity: 0.7;">Fonte: Fórum Brasileiro de Segurança
+                    Pública (2024/2025)</p>
             </div>
         </div>
     </section>
@@ -895,261 +1004,292 @@
                     <h4>180</h4>
                     <p>Central de Atendimento à Mulher</p>
                 </div>
-                <div class="stat-card reveal">
-                    <i class="fas fa-shield-alt" style="font-size: 2rem; color: #2196f3;"></i>
-                    <h4>190</h4>
-                    <p>Polícia Militar (Emergências)</p>
-                </div>
-            </div>
-
-            <div style="text-align: center; margin-top: 40px;">
-                <p class="highlight-text">Apoie as vítimas, incentive a denúncia e ajude a salvar vidas.</p>
             </div>
         </div>
     </section>
 
     <section id="sec-quiz">
         <div class="glass-card reveal">
-            <h2 class="glow-text" style="text-align: center; margin-bottom: 40px;">Quiz de Conscientização</h2>
+            <h2 class="glow-text" style="text-align: center; margin-bottom: 40px;">Quiz de Conscientização
+            </h2>
 
             <div class="quiz-container" id="quiz-body">
-                <div class="quiz-question">
-                    <h3>1. Segundo os dados apresentados, qual é a expectativa de vida média de uma pessoa trans no
-                        Brasil?</h3>
-                    <div class="options-list">
-                        <div class="option-item"><label><input type="radio" name="q1" value="0"> A) 55 anos, estando
-                                próxima da expectativa nacional</label></div>
-                        <div class="option-item"><label><input type="radio" name="q1" value="1"> B) 35 anos,
-                                representando cerca da metade da expectativa nacional</label></div>
-                        <div class="option-item"><label><input type="radio" name="q1" value="0"> C) 65 anos, devido a
-                                avanços na saúde pública</label></div>
-                        <div class="option-item"><label><input type="radio" name="q1" value="0"> D) 45 anos, sendo a
-                                menor da América Latina</label></div>
-                    </div>
-                </div>
+                            <!-- Pergunta 1 -->
+                            <div class="quiz-question">
+                                <h3>1. Segundo os dados de 2024, quantas mulheres foram vítimas de feminicídio no
+                                    Brasil?</h3>
+                                <div class="options-list">
+                                    <div class="option-item"><label><input type="radio" name="q1" value="0"> A)
+                                            1.250</label></div>
+                                    <div class="option-item"><label><input type="radio" name="q1" value="1"> B) 1.492,
+                                            um novo recorde histórico</label></div>
+                                    <div class="option-item"><label><input type="radio" name="q1" value="0"> C)
+                                            900</label></div>
+                                    <div class="option-item"><label><input type="radio" name="q1" value="0"> D)
+                                            1.400</label></div>
+                                </div>
+                            </div>
 
-                <div class="quiz-question">
-                    <h3>2. Qual porcentagem das vítimas de feminicídio no Brasil são mães e acabam deixando crianças
-                        órfãs?</h3>
-                    <div class="options-list">
-                        <div class="option-item"><label><input type="radio" name="q2" value="0"> A) 50%</label></div>
-                        <div class="option-item"><label><input type="radio" name="q2" value="0"> B) 62%</label></div>
-                        <div class="option-item"><label><input type="radio" name="q2" value="1"> C) 74%</label></div>
-                        <div class="option-item"><label><input type="radio" name="q2" value="0"> D) 88%</label></div>
-                    </div>
-                </div>
+                            <!-- Pergunta 2 -->
+                            <div class="quiz-question">
+                                <h3>2. Qual porcentagem das vítimas de feminicídio em 2024 eram mulheres negras?</h3>
+                                <div class="options-list">
+                                    <div class="option-item"><label><input type="radio" name="q2" value="0"> A)
+                                            40%</label></div>
+                                    <div class="option-item"><label><input type="radio" name="q2" value="0"> B)
+                                            52%</label></div>
+                                    <div class="option-item"><label><input type="radio" name="q2" value="1"> C)
+                                            64%</label></div>
+                                    <div class="option-item"><label><input type="radio" name="q2" value="0"> D)
+                                            75%</label></div>
+                                </div>
+                            </div>
 
-                <div class="quiz-question">
-                    <h3>3. Qual importante marco histórico para a diversidade ocorreu no ano de 1990?</h3>
-                    <div class="options-list">
-                        <div class="option-item"><label><input type="radio" name="q3" value="0"> A) O STF reconheceu a
-                                união estável no Brasil</label></div>
-                        <div class="option-item"><label><input type="radio" name="q3" value="1"> B) A OMS retirou a
-                                homossexualidade da lista de doenças mentais</label></div>
-                        <div class="option-item"><label><input type="radio" name="q3" value="0"> C) Gilbert Baker criou
-                                a bandeira do orgulho</label></div>
-                        <div class="option-item"><label><input type="radio" name="q3" value="0"> D) Aconteceu a revolta
-                                de Stonewall Inn</label></div>
-                    </div>
-                </div>
+                            <!-- Pergunta 3 -->
+                            <div class="quiz-question">
+                                <h3>3. Na Sociologia, o que define o "Patriarcado"?</h3>
+                                <div class="options-list">
+                                    <div class="option-item"><label><input type="radio" name="q3" value="0"> A) Um
+                                            sistema de igualdade absoluta</label></div>
+                                    <div class="option-item"><label><input type="radio" name="q3" value="1"> B) Um
+                                            sistema social onde o poder e controle são centrados nos homens</label>
+                                    </div>
+                                    <div class="option-item"><label><input type="radio" name="q3" value="0"> C) Uma
+                                            forma de governo antiga</label></div>
+                                    <div class="option-item"><label><input type="radio" name="q3" value="0"> D) O estudo
+                                            dos pais na sociedade</label></div>
+                                </div>
+                            </div>
 
-                <div class="quiz-question">
-                    <h3>4. De acordo com o site, o que caracteriza e diferencia fundamentalmente o feminicídio de um
-                        homicídio comum?</h3>
-                    <div class="options-list">
-                        <div class="option-item"><label><input type="radio" name="q4" value="0"> A) É cometido
-                                unicamente em espaços públicos contra mulheres</label></div>
-                        <div class="option-item"><label><input type="radio" name="q4" value="0"> B) Envolve estritamente
-                                motivações financeiras (roubo)</label></div>
-                        <div class="option-item"><label><input type="radio" name="q4" value="0"> C) Ocorre apenas entre
-                                pessoas desconhecidas</label></div>
-                        <div class="option-item"><label><input type="radio" name="q4" value="1"> D) É um crime de ódio
-                                cometido por razões da condição de sexo feminino e menosprezo à mulher</label></div>
-                    </div>
-                </div>
+                            <!-- Pergunta 4 -->
+                            <div class="quiz-question">
+                                <h3>4. Qual destes é um "Tipo de Violência" definido pela Lei Maria da Penha?</h3>
+                                <div class="options-list">
+                                    <div class="option-item"><label><input type="radio" name="q4" value="0"> A) Apenas
+                                            agressão física</label></div>
+                                    <div class="option-item"><label><input type="radio" name="q4" value="0"> B)
+                                            Violência espiritual</label></div>
+                                    <div class="option-item"><label><input type="radio" name="q4" value="0"> C) Apenas
+                                            xingamentos</label></div>
+                                    <div class="option-item"><label><input type="radio" name="q4" value="1"> D)
+                                            Violência Patrimonial (controle de bens e documentos)</label></div>
+                                </div>
+                            </div>
 
-                <div class="quiz-question">
-                    <h3>5. Na sigla LGBTQIA+, a letra "I" representa pessoas Intersexo. O que isso significa segundo os
-                        conceitos abordados?</h3>
-                    <div class="options-list">
-                        <div class="option-item"><label><input type="radio" name="q5" value="0"> A) Pessoas cuja
-                                identidade transita entre os gêneros (Queer)</label></div>
-                        <div class="option-item"><label><input type="radio" name="q5" value="1"> B) Pessoas com
-                                características que estão fora do binário biológico tradicional</label></div>
-                        <div class="option-item"><label><input type="radio" name="q5" value="0"> C) Pessoas que não
-                                sentem nenhuma atração sexual (Assexuais)</label></div>
-                        <div class="option-item"><label><input type="radio" name="q5" value="0"> D) Pessoas cuja
-                                identidade diverge do sexo biológico (Trans)</label></div>
-                    </div>
-                </div>
+                            <!-- Pergunta 5 -->
+                            <div class="quiz-question">
+                                <h3>5. O que caracteriza o "Machismo Estrutural" segundo os conceitos abordados?</h3>
+                                <div class="options-list">
+                                    <div class="option-item"><label><input type="radio" name="q5" value="0"> A) Um
+                                            comportamento individual rude</label></div>
+                                    <div class="option-item"><label><input type="radio" name="q5" value="1"> B) Um fato
+                                            social infiltrado nas leis, economia e cultura</label></div>
+                                    <div class="option-item"><label><input type="radio" name="q5" value="0"> C) Alguma
+                                            coisa que não existe mais</label></div>
+                                    <div class="option-item"><label><input type="radio" name="q5" value="0"> D) Um
+                                            sistema de construção civil</label></div>
+                                </div>
+                            </div>
 
-                <div class="quiz-question">
-                    <h3>6. Os dados apontam que a esmagadora maioria dos casos de violência contra a mulher acontece em
-                        qual local?</h3>
-                    <div class="options-list">
-                        <div class="option-item"><label><input type="radio" name="q6" value="1"> A) Em ambiente
-                                doméstico (82% dos casos)</label></div>
-                        <div class="option-item"><label><input type="radio" name="q6" value="0"> B) No ambiente de
-                                trabalho (82% dos casos)</label></div>
-                        <div class="option-item"><label><input type="radio" name="q6" value="0"> C) Nas ruas ou
-                                transporte público (65% dos casos)</label></div>
-                        <div class="option-item"><label><input type="radio" name="q6" value="0"> D) Durante a vida
-                                escolar e acadêmica (73% dos casos)</label></div>
-                    </div>
-                </div>
+                            <!-- Pergunta 10 (Abreviado para o exemplo, mas vou incluir todas se possível ou as mais relevantes) -->
+                            <!-- Vou incluir as 10 para o score funcionar -->
+                            <div class="quiz-question">
+                                <h3>6. Em que ano a homossexualidade deixou de ser considerada doença pela OMS?</h3>
+                                <div class="options-list">
+                                    <div class="option-item"><label><input type="radio" name="q6" value="1"> A)
+                                            1990</label></div>
+                                    <div class="option-item"><label><input type="radio" name="q6" value="0"> B)
+                                            2011</label></div>
+                                    <div class="option-item"><label><input type="radio" name="q6" value="0"> C)
+                                            1980</label></div>
+                                    <div class="option-item"><label><input type="radio" name="q6" value="0"> D)
+                                            2000</label></div>
+                                </div>
+                            </div>
 
-                <div class="quiz-question">
-                    <h3>7. Há quantos anos consecutivos o Brasil ocupa o 1º lugar no ranking do país que mais mata
-                        pessoas trans no mundo?</h3>
-                    <div class="options-list">
-                        <div class="option-item"><label><input type="radio" name="q7" value="0"> A) Há 5 anos</label>
-                        </div>
-                        <div class="option-item"><label><input type="radio" name="q7" value="0"> B) Há 10 anos</label>
-                        </div>
-                        <div class="option-item"><label><input type="radio" name="q7" value="1"> C) Há 15 anos</label>
-                        </div>
-                        <div class="option-item"><label><input type="radio" name="q7" value="0"> D) Há 20 anos</label>
-                        </div>
-                    </div>
-                </div>
+                            <div class="quiz-question">
+                                <h3>7. Qual é a expectativa de vida média de uma pessoa trans no Brasil?</h3>
+                                <div class="options-list">
+                                    <div class="option-item"><label><input type="radio" name="q7" value="0"> A) 70
+                                            anos</label></div>
+                                    <div class="option-item"><label><input type="radio" name="q7" value="0"> B) 50
+                                            anos</label></div>
+                                    <div class="option-item"><label><input type="radio" name="q7" value="1"> C) 35
+                                            anos</label></div>
+                                    <div class="option-item"><label><input type="radio" name="q7" value="0"> D) 45
+                                            anos</label></div>
+                                </div>
+                            </div>
 
-                <div class="quiz-question">
-                    <h3>8. Diante das estatísticas globais sobre violência de gênero, qual a posição atual do Brasil em
-                        relação aos países mais violentos para mulheres?</h3>
-                    <div class="options-list">
-                        <div class="option-item"><label><input type="radio" name="q8" value="0"> A) 1º país mais
-                                violento</label></div>
-                        <div class="option-item"><label><input type="radio" name="q8" value="0"> B) 3º país mais
-                                violento</label></div>
-                        <div class="option-item"><label><input type="radio" name="q8" value="1"> C) 5º país mais
-                                violento</label></div>
-                        <div class="option-item"><label><input type="radio" name="q8" value="0"> D) 10º país mais
-                                violento</label></div>
-                    </div>
-                </div>
+                            <div class="quiz-question">
+                                <h3>8. O crime de feminicídio no Brasil é tecnicamente classificado como:</h3>
+                                <div class="options-list">
+                                    <div class="option-item"><label><input type="radio" name="q8" value="0"> A)
+                                            Homicídio culposo</label></div>
+                                    <div class="option-item"><label><input type="radio" name="q8" value="0"> B) Acidente
+                                            doméstico</label></div>
+                                    <div class="option-item"><label><input type="radio" name="q8" value="1"> C) Crime de
+                                            ódio baseado no gênero</label></div>
+                                    <div class="option-item"><label><input type="radio" name="q8" value="0"> D) Legítima
+                                            defesa da honra</label></div>
+                                </div>
+                            </div>
 
-                <div class="quiz-question">
-                    <h3>9. Em caso de necessidade e apoio, qual é o canal correto e sua respectiva função para vítimas
-                        de violência?</h3>
-                    <div class="options-list">
-                        <div class="option-item"><label><input type="radio" name="q9" value="0"> A) 190 é a Central de
-                                Atendimento exclusiva para a Mulher</label></div>
-                        <div class="option-item"><label><input type="radio" name="q9" value="1"> B) 180 é a Central de
-                                Atendimento à Mulher e 190 é a Polícia Militar (Emergências)</label></div>
-                        <div class="option-item"><label><input type="radio" name="q9" value="0"> C) 180 atende
-                                emergências de saúde mental e o 190 atende denúncias anônimas</label></div>
-                        <div class="option-item"><label><input type="radio" name="q9" value="0"> D) Ambos os números
-                                (180 e 190) são os mesmos em todas as redes de emergência</label></div>
-                    </div>
-                </div>
+                            <div class="quiz-question">
+                                <h3>9. Qual canal deve ser usado para denúncias e acolhimento à mulher (Central de
+                                    Atendimento)?</h3>
+                                <div class="options-list">
+                                    <div class="option-item"><label><input type="radio" name="q9" value="0"> A)
+                                            190</label></div>
+                                    <div class="option-item"><label><input type="radio" name="q9" value="1"> B)
+                                            180</label></div>
+                                    <div class="option-item"><label><input type="radio" name="q9" value="0"> C)
+                                            112</label></div>
+                                    <div class="option-item"><label><input type="radio" name="q9" value="0"> D)
+                                            151</label></div>
+                                </div>
+                            </div>
 
-                <div class="quiz-question">
-                    <h3>10. O assédio e a violência estudantil revelam uma grave falha nas estruturas. Segundo o site,
-                        qual proporção de estudantes LGBTQIA+ sofre bullying ou violência nas escolas?</h3>
-                    <div class="options-list">
-                        <div class="option-item"><label><input type="radio" name="q10" value="0"> A) 33%</label></div>
-                        <div class="option-item"><label><input type="radio" name="q10" value="0"> B) 50%</label></div>
-                        <div class="option-item"><label><input type="radio" name="q10" value="1"> C) 73%</label></div>
-                        <div class="option-item"><label><input type="radio" name="q10" value="0"> D) 82%</label></div>
-                    </div>
-                </div>
+                            <div class="quiz-question">
+                                <h3>10. "Gaslighting" é um exemplo de qual tipo de violência?</h3>
+                                <div class="options-list">
+                                    <div class="option-item"><label><input type="radio" name="q10" value="0"> A)
+                                            Patrimonial</label></div>
+                                    <div class="option-item"><label><input type="radio" name="q10" value="1"> B)
+                                            Psicológica</label></div>
+                                    <div class="option-item"><label><input type="radio" name="q10" value="0"> C)
+                                            Sexual</label></div>
+                                    <div class="option-item"><label><input type="radio" name="q10" value="0"> D)
+                                            Moral</label></div>
+                                </div>
+                            </div>
 
-                <button class="btn-result" id="btn-submit-quiz" onclick="calculateScore()">Ver Resultado</button>
+                            <button class="btn-result" id="btn-submit-quiz" onclick="calculateScore()">Ver
+                                Resultado</button>
 
-                <div id="quiz-loader">
-                    <img src="gemini.png" class="loader-flag">
-                    <h3 class="loader-text">Analisando suas respostas...</h3>
-                </div>
+                            <div id="quiz-loader">
+                                <img src="loader.png" alt="Processando dados sociais..." class="loader-flag"
+                                    style="max-width: 200px; margin-bottom: 20px;">
+                                <h3 class="loader-text">Analisando suas respostas...</h3>
+                            </div>
 
-                <div id="quiz-score">
-                    <h2 id="score-text"></h2>
-                    <p id="concl-msg" style="margin-top: 15px; font-weight: 300;"></p>
-                </div>
+                            <div id="quiz-score">
+                                <h2 id="score-text"></h2>
+                                <p id="concl-msg" style="margin-top: 15px; font-weight: 300;"></p>
+                            </div>
             </div>
         </div>
     </section>
 
-    <script>
-        // Lógica do Coração
-        const heart = document.getElementById('main-heart');
-        heart.onclick = () => {
-            const colors = ['#ff0080', '#00f3ff', '#9c27b0', '#ffeb3b', '#4caf50'];
-            const randomColor = colors[Math.floor(Math.random() * colors.length)];
-            heart.style.color = randomColor;
-            heart.style.filter = `drop-shadow(0 0 25px ${randomColor})`;
-        };
+    <section id="sec-fontes">
+                    <div class="glass-card reveal">
+                        <h2 class="glow-text" style="text-align: center;">Fontes Científicas e Acadêmicas</h2>
+                        <div class="info-block">
+                            <ul style="list-style: none; padding-left: 0;">
+                                <li style="margin-bottom: 15px;"><i class="fas fa-check-circle"
+                                        style="color: var(--neon-women);"></i> <strong>Fórum Brasileiro de Segurança
+                                        Pública (FBSP)</strong> - Anuário 2024 (Recordes de Feminicídio).</li>
+                                <li style="margin-bottom: 15px;"><i class="fas fa-check-circle"
+                                        style="color: var(--neon-women);"></i> <strong>Lei Maria da Penha (Lei
+                                        11.340/06)</strong> - Tipificação das Violências Estruturais.</li>
+                                <li style="margin-bottom: 15px;"><i class="fas fa-check-circle"
+                                        style="color: var(--neon-women);"></i> <strong>DURKHEIM, Émile</strong> - O
+                                    conceito de "Fato Social" aplicado ao machismo.</li>
+                                <li style="margin-bottom: 15px;"><i class="fas fa-check-circle"
+                                        style="color: var(--neon-women);"></i> <strong>SAFFIOTI, Heleieth</strong> -
+                                    Estudos sobre o Patriarcado e Violência de Gênero.</li>
+                                <li style="margin-bottom: 15px;"><i class="fas fa-check-circle"
+                                        style="color: var(--neon-women);"></i> <strong>OMS / ONU Mulheres</strong> -
+                                    Estatísticas globais e diretrizes de prevenção.</li>
+                            </ul>
+                        </div>
+                        <p style="text-align: center; margin-top: 30px; opacity: 0.6; font-size: 0.9rem;">Trabalho
+                            Acadêmico de Sociologia - 2024/2025.</p>
+                    </div>
+                </section>
 
-        // ANIMAÇÃO AO SCROLL (Intersection Observer)
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
-                }
-            });
-        }, { threshold: 0.15 });
+                <script>
+                    // Lógica do Coração
+                    const heart = document.getElementById('main-heart');
+                    heart.onclick = () => {
+                        const colors = ['#ff0080', '#00f3ff', '#9c27b0', '#ffeb3b', '#4caf50'];
+                        const randomColor = colors[Math.floor(Math.random() * colors.length)];
+                        heart.style.color = randomColor;
+                        heart.style.filter = `drop-shadow(0 0 25px ${randomColor})`;
+                    };
 
-        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+                    // ANIMAÇÃO AO SCROLL (Intersection Observer)
+                    const observer = new IntersectionObserver((entries) => {
+                        entries.forEach(entry => {
+                            if (entry.isIntersecting) {
+                                entry.target.classList.add('active');
+                            }
+                        });
+                    }, { threshold: 0.02 });
 
-        // Navegação Lateral Ativa
-        window.addEventListener('scroll', () => {
-            const sections = document.querySelectorAll('section');
-            const navLinks = document.querySelectorAll('.side-nav a');
-            let current = '';
-            sections.forEach(section => {
-                if (pageYOffset >= section.offsetTop - 250) {
-                    current = section.getAttribute('id');
-                }
-            });
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href').includes(current)) link.classList.add('active');
-            });
-        });
+                    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-        // ============================================================
-        // LÓGICA DO QUIZ (Solicitação 6)
-        // ============================================================
-        function calculateScore() {
-            let score = 0;
-            const totalQuestions = 10;
+                    // Navegação Lateral Ativa
+                    window.addEventListener('scroll', () => {
+                        const sections = document.querySelectorAll('section');
+                        const navLinks = document.querySelectorAll('.side-nav a');
+                        let current = '';
+                        sections.forEach(section => {
+                            if (pageYOffset >= section.offsetTop - 250) {
+                                current = section.getAttribute('id');
+                            }
+                        });
+                        navLinks.forEach(link => {
+                            link.classList.remove('active');
+                            if (link.getAttribute('href').includes(current)) link.classList.add('active');
+                        });
+                    });
 
-            for (let i = 1; i <= totalQuestions; i++) {
-                const options = document.getElementsByName('q' + i);
-                for (let option of options) {
-                    if (option.checked && option.value === "1") {
-                        score++;
+                    // ============================================================
+                    // LÓGICA DO QUIZ (Solicitação 6)
+                    // ============================================================
+                    function calculateScore() {
+                        let score = 0;
+                        const totalQuestions = 10;
+
+                        for (let i = 1; i <= totalQuestions; i++) {
+                            const options = document.getElementsByName('q' + i);
+                            for (let j = 0; j < options.length; j++) {
+                                let option = options[j];
+                                if (option.checked && option.value === "1") {
+                                    score++;
+                                }
+                            }
+                        }
+
+                        const btnSubmit = document.getElementById('btn-submit-quiz');
+                        const loader = document.getElementById('quiz-loader');
+                        const scoreDisplay = document.getElementById('quiz-score');
+                        const scoreText = document.getElementById('score-text');
+                        const conclMsg = document.getElementById('concl-msg');
+
+                        // Esconder botão e score (caso já esteja visível), mostrar loader
+                        btnSubmit.style.display = 'none';
+                        scoreDisplay.style.display = 'none';
+                        loader.style.display = 'block';
+                        loader.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+                        // Aguardar brevemente (800ms) para melhorar a experiência
+                        setTimeout(() => {
+                            loader.style.display = 'none';
+
+                            scoreText.innerHTML = `Você acertou ${score} de ${totalQuestions} questões!`;
+                            conclMsg.innerHTML = "Quanto mais informação, mais podemos combater a violência e construir uma sociedade com respeito e igualdade.";
+
+                            scoreDisplay.style.display = 'block';
+                            scoreDisplay.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+                            // Mostrar o botão novamente para permitir refazer
+                            btnSubmit.style.display = 'block';
+                            btnSubmit.innerHTML = 'Refazer Quiz';
+                        }, 800);
                     }
-                }
-            }
-
-            const btnSubmit = document.getElementById('btn-submit-quiz');
-            const loader = document.getElementById('quiz-loader');
-            const scoreDisplay = document.getElementById('quiz-score');
-            const scoreText = document.getElementById('score-text');
-            const conclMsg = document.getElementById('concl-msg');
-
-            // Esconder botão e score (caso já esteja visível), mostrar loader
-            btnSubmit.style.display = 'none';
-            scoreDisplay.style.display = 'none';
-            loader.style.display = 'block';
-            loader.scrollIntoView({ behavior: 'smooth', block: 'center' });
-
-            // Aguardar 5 segundos (5000ms)
-            setTimeout(() => {
-                loader.style.display = 'none';
-
-                scoreText.innerHTML = `Você acertou ${score} de ${totalQuestions} questões!`;
-                conclMsg.innerHTML = "Quanto mais informação, mais podemos combater a violência e construir uma sociedade com respeito e igualdade.";
-
-                scoreDisplay.style.display = 'block';
-                scoreDisplay.scrollIntoView({ behavior: 'smooth', block: 'center' });
-
-                // Mostrar o botão novamente para permitir refazer
-                btnSubmit.style.display = 'block';
-                btnSubmit.innerHTML = 'Refazer Quiz';
-            }, 5000);
-        }
-    </script>
+                </script>
 </body>
 
 </html>
